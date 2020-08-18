@@ -54,7 +54,7 @@ pwd lists the current working directory, which is displayed in the simplesh term
 #!/usr/bin/env simple_shell
 echo Hello from simple shell!
 ```
-Then execute the script you will see "Hello from simple shell!" in our terminal. We can also use command line arguments for variables. Currently, $0 is always "simplesh", $1 is the script name, and $2 and beyond are the arguments. So if we want the first argument, you would put in $2 like so:
+Then execute the script you will see "Hello from simple shell!" in our terminal. We can also use command line arguments for variables. Currently, $0 is always "simplesh", $1 is the name, and $2 and beyond are the arguments. So if we want the first argument, you would put in $2 like so:
 ```
 #!/usr/bin/env simple_shell
 echo Hello $2
