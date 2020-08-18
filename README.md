@@ -25,7 +25,7 @@ Built-ins:
 * unsetenv
 * env (listing environment functionality only)
 * cd
-* 
+* alias
 * unalias
 * history
 
