@@ -19,7 +19,7 @@ simplesh [script files]
 
 
 Built-ins:
-* help
+* h
 * exit [status]
 * setenv
 * unsetenv
