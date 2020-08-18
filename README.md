@@ -6,7 +6,7 @@ simplesh [script files]
 
 ## Current features
 
-* It Runs commands in $PATH
+* It R commands in $PATH
 * Environment and local variables
 * $? return values, $$ pid
 * $# number of args and $0-9 (not a perfect sh mimic currently though)
