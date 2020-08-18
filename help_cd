@@ -6,7 +6,7 @@ cd: cd
 
     The variable CDPATH defines the search path for the directory containing
     DIR.  Alternative directory names in CDPATH are separated by a colon (:).
-    A null directory name is the same as the current directory.  If DIR begins
+    A null directory name is the same as tthe current directory.  If DIR begins
     with a slash (/), then CDPATH is not used.
 
     Exit Status:
