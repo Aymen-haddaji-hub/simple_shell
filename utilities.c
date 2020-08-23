@@ -73,11 +73,11 @@ int printer(char *str)
 	strnumb = intos(linecounter(0));
 	if (str != NULL)
 	{
-		strprinter(2, pathname, ": ", strnumb, str, NULL);
+		str_printer(2, pathname, ": ", strnumb, str, NULL);
 	}
 	else
 	{
-		strprinter(2, pathname, ": ", strnumb, ": ", NULL);
+		str_printer(2, pathname, ": ", strnumb, ": ", NULL);
 		perror(NULL);
 	}
 	free(pathname);
@@ -85,12 +85,12 @@ int printer(char *str)
 	return (0);
 }
 /**
- * strprinter - simple string printer, va args should have a NULL last arg
+ * str_printer - simple string printer, va args should have a NULL last arg
  * @fd: file descriptor
  * @str: string
  * Return: 0
  */
-int strprinter(int fd, char *str, ...)
+int str_printer(int fd, char *str, ...)
 {
 	va_list list;
 
@@ -108,15 +108,15 @@ int strprinter(int fd, char *str, ...)
 }
 
 /**
- * _strchr - locates a character in a string
+ * _str_chr - locates a character in a string
  * @s: char pointer
  * @c: char
- * _strchr: locates character in a string and returns a pointer
+ * _str_chr: locates character in a string and returns a pointer
  * to the first occurence of c in the string s
  *
  * Return: address of first occurence of c in s
  */
-char *_strchr(char *s, char c)
+char *_str_chr(char *s, char c)
 {
 	int i;
 	int j;

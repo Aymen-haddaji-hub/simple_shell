@@ -1,14 +1,13 @@
 #include "shell.h"
-#include "history.h"
 /**
  * _history - gets the history list
  * Return: 0 uposon success
  */
 HistList **_history()
 {
-	static HistList *hlist;
+	static HistList *h_list;
 
-	return (&hlist);
+	return (&h_list);
 }
 /**
  * sethist - set hist and value
@@ -17,11 +16,11 @@ HistList **_history()
  */
 int sethist(char *cmd)
 {
-	HistList **hlistroot = _history();
-	HistList *hlist = *hlistroot;
-	HistList *ptr = hlist, *new;
+	HistList **h_list_root = _history();
+	HistList *h_list = *h_list_root;
+	HistList *ptr = h_list, *new;
 
-	if (hlist == NULL)
+	if (h_list == NULL)
 	{
 		new = malloc(sizeof(HistList));
 		if (new == NULL)
@@ -29,7 +28,7 @@ int sethist(char *cmd)
 
 		new->cmd = _strdup(cmd);
 		new->next = NULL;
-		*hlistroot = new;
+		*h_list_root = new;
 		return (0);
 	}
 	while (ptr->next != NULL)
@@ -50,8 +49,8 @@ int sethist(char *cmd)
  */
 int print_hist(void)
 {
-	HistList **hlistroot = _history();
-	HistList *h = *hlistroot;
+	HistList **h_list_root = _history();
+	HistList *h = *h_list_root;
 	int i;
 	int len, numlen;
 	char *s, *num;
@@ -84,9 +83,9 @@ int exit_hist(void)
 	int len;
 	char *s;
 
-	HistList **hlistroot = _history();
-	HistList *hlist = *hlistroot;
-	HistList *ptr = hlist;
+	HistList **h_list_root = _history();
+	HistList *h_list = *h_list_root;
+	HistList *ptr = h_list;
 
 /*
  *	file = tildeexpand(file);
@@ -95,15 +94,15 @@ int exit_hist(void)
 	if (fd == -1)
 		return (-1);
 
-	while (hlist != NULL)
+	while (h_list != NULL)
 	{
-		ptr = hlist->next;
-		s = hlist->cmd;
+		ptr = h_list->next;
+		s = h_list->cmd;
 		len = _strlen(s);
 		write(fd, s, len);
-		free(hlist->cmd);
-		free(hlist);
-		hlist = ptr;
+		free(h_list->cmd);
+		free(h_list);
+		h_list = ptr;
 	}
 
 	close(fd);

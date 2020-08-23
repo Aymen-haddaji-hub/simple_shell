@@ -8,95 +8,149 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "history.h"
-#include "shellvars.h"
-/*#include <string.h>*/
 
-/* in.c */
-int shintmode(void);
+#ifndef SHELLVARH
+#define SHELLVARH
 
-/*  _printenv.c */
-int _printenv(void);
+/**
+ * struct ShellVar - shellvar list node
+ *
+ * @name: name of var
+ * @val: value of var
+ * @next: next var in list
+ */
+typedef struct ShellVar
+{
+	char *name;
+	char *val;
+	struct ShellVar *next;
+} ShellVar;
 
-/*  cmdcall.c */
-int builtincall(char *av[]);
-int cmdcaller(char *av[], char *path);
+#endif
 
-/*  parser.c */
-int parseargs(char **buf);
+#ifndef HISTORY_H
+#define HISTORY_H
+/**
+ * struct HistList - singly linked list
+ * @cmd: command
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ * for Holberton project
+ */
+typedef struct HistList
+{
+	char *cmd;
+	struct HistList *next;
+} HistList;
+#endif
 
-/*  errhandl.c */
-int errhandl(int status);
+#ifndef ALIASH
+#define ALIASH
+/**
+ * struct AliasData - struct for alias function
+ * @AliasData - name of struct
+ * @name: name of alias value
+ * @val: value for alias
+ * @next: ptr to next node
+ */
+typedef struct AliasData
+{
+	char *name;
+	char *val;
+	struct AliasData *next;
+} AliasData;
 
-/*  _getenv.c and getenviron.c */
-char ***getenviron(void);
-int setallenv(char **environ, char *add);
-char *_getenv(char *avzero);
-int _setenv(char *name, char *val);
-int _unsetenv(char *name);
-char **getallenv(void);
+#endif
 
-/*  string.c */
+int shint_mode(void);
+
+
+int _print_env(void);
+
+
+int builtin_call(char *av[]);
+int cmd_caller(char *av[], char *path);
+
+
+int parse_args(char **buf);
+
+
+int err_handler(int status);
+
+
+char ***get_environ(void);
+int set_all_env(char **environ, char *add);
+char *_get_env(char *avzero);
+int _set_env(char *name, char *val);
+int _unset_env(char *name);
+char **get_all_env(void);
+
+
 size_t _strlen(char *str);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *, char *);
 char *_strdup(char *str);
 char *_strcat(char *a, char *b);
 
-/* utilities */
+
 char *intos(int digits);
-char *_strchr(char *s, char c);
-int strprinter(int fd, char *str, ...);
+char *_str_chr(char *s, char c);
+int str_printer(int fd, char *str, ...);
 int printer(char *);
 int linecounter(int);
 
-/*  cd.c */
+
 int _cd(char *av[]);
 
-/* alias.c */
-int aliascmd(char **av);
-char *getalias(char *name);
-int unsetalias(char *name);
 
-/* shellvars.c */
+int alias_cmd(char **av);
+char *get_alias(char *name);
+int unset_alias(char *name);
+
+
 int _vars(int ac, char **av);
 char *get_var(char *name);
 int set_var(char *name, char *val);
 int unset_var(char *name);
-ShellVar **getspecial(void);
-ShellVar **getvars(void);
+ShellVar **get_special(void);
+ShellVar **get_vars(void);
 
-/* _realloc.c */
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-/* _strtok.c */
+
 char *strtok(char *str, char *delim);
 
-/* _getline.c */
-int _getline(char **lineptr, int fd);
 
-char *strtokqe(char *str, char *delim, int escflags);
+int _get_line(char **lineptr, int fd);
+
+char *strtoken(char *str, char *delim, int escflags);
 
 
-/* _printenv.c */
+
 int _printenv(void);
 int _putchar(char c);
 
-/* history.c*/
+
 int sethist(char *cmd);
 int print_hist(void);
 int exit_hist(void);
 
-/* help.c*/
+
 int help(char *cmd);
 
-/*  exitcleanup.c */
-void exitcleanup(char **av);
 
-/* _atoi*/
+void exit_clean(char **av);
+
+
 int _atoi(char *s);
 
-char *_getpid(void);
+char *_get_pid(void);
 
 
 #endif
+
+
+
+

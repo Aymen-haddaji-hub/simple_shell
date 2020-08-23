@@ -1,16 +1,12 @@
 #include "shell.h"
 /**
- * strtokqe - string token with quotes and escapes
+ * strtoken - string token with quotes and escapes
  * @str: string
  * @delim: delimiters
  * @escflags: escape flags
- * flags are bitwise.
- * 1 = use \ to escape delims
- * 2 = single quote skips
- * 4 = double quote skips
  * Return: string
  */
-char *strtokqe(char *str, char *delim, int escflags)
+char *strtoken(char *str, char *delim, int escflags)
 {
 	static char *saved_string;
 	int i;

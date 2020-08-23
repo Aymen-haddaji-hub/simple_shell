@@ -11,12 +11,12 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 /**
- * _printenv - print environment
+ * _print_env - print environment
  * Return: 0 if success
  */
-int _printenv(void)
+int _print_env(void)
 {
-	char **environ = *(getenviron());
+	char **environ = *(get_environ());
 	int i;
 	int j;
 
